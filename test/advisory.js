@@ -370,3 +370,15 @@ t.test('default to "high" when no severity specified', t => {
   }, 'default to all versions being considered vulnerable')
   t.end()
 })
+
+t.test('getPakuVersions: Should return an empty array when packument.versions is falsy', (t) => {
+  const packument = {
+    versions: null,
+  }
+
+  const expected = []
+  const actual = Advisory.getPakuVersions(packument)
+
+  t.same(actual, expected, 'The returned array should be empty')
+  t.end()
+})
